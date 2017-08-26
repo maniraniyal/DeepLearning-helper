@@ -1,6 +1,10 @@
 '''
 Created on 2017-08-24
-
+Call load_data() function with directory where the CIFAR10 data-set is extracted.
+Return:
+    training data [images(nd.array), labels(nd.array)](list)
+    test data    [images(nd.array), labels(nd.array)](list)
+    mapping_of_classes [name of classes](list)
 @author: mani
 '''
 import pickle
@@ -50,6 +54,6 @@ def load_data(base_dir):
     
 if __name__ == "__main__":
     train,test,classes = load_data("../../Downloads/cifar-10-batches-py")
-    print ("training set shape: ", train.shape)
-    print ("test set shape: ", test.shape)
+    print ("training set shape: ", train[0].shape)
+    print ("test set shape: ", test[0].shape)
     print ("classes set shape: ", len(classes))
