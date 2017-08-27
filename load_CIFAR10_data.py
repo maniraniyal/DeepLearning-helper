@@ -10,9 +10,6 @@ Return:
 import pickle
 import numpy as np
 from scipy import sparse
-_image_oneSide = 32
-_image_channels = 3
-_image_flat_size = _image_oneSide * _image_oneSide *  _image_channels
 _base_dir = None
 
 def _unpickle(file_name):
