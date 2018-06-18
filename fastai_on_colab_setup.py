@@ -22,7 +22,7 @@ else:
         sys.exit()
     
     !mkdir ~/.kaggle
-    !echo {KAGGLE_API_credential} > ~/.kaggle/kaggle.json
+    !echo '{KAGGLE_API_credential}' > ~/.kaggle/kaggle.json
     !chmod 600 ~/.kaggle/kaggle.json
     
     #to fix PIL issue
