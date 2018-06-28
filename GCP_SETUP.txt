@@ -5,8 +5,16 @@
 
 # create custom image
 1> create a VM with Ubuntu 16.04
-2> install cuda : https://developer.nvidia.com/cuda-zone
-3> Download cuDNN
+2> install cuda : https://www.tensorflow.org/install/install_linux
+   https://developer.nvidia.com/cuda-zone
+3> Download cuDNN : http://developer.nvidia.com/cudnn
 4> "gcloud compute scp" cuDNN to instance
-5> install cuDNN
+5> install cuDNN:
+    cd $HOME
+    tar xzvf cudnn-<>.tgz
+    sudo cp cuda/lib64/* /usr/local/cuda/lib64/
+    sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
+    rm -rf ~/cuda
+    rm cudnn-<>.tgz
+6> install driver: https://cloud.google.com/compute/docs/gpus/add-gpus#install-driver-manual
 
