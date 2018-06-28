@@ -1,3 +1,12 @@
+# GCP setup
 1> Download and install SDK : https://cloud.google.com/sdk/
 2> pip install --upgrade google-api-python-client
 3> gcloud init --console-only
+
+# create custom image
+1> create a VM with Ubuntu 16.04
+2> install cuda : https://developer.nvidia.com/cuda-zone
+3> Download cuDNN
+4> "gcloud compute scp" cuDNN to instance
+5> install cuDNN
+
