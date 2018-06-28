@@ -7,8 +7,9 @@ if ! dpkg-query -W gcsfuse; then
   sudo apt-get update
   sudo apt-get install gcsfuse -y
   mkdir SETUP_BUCKET
-  # Note that user should create $USER-dl-setup bucket in advance
-  gcsfuse $USER-dl-setup SETUP_BUCKET
+  mkdir WEIGHTS_BUCKET
+  mkdir DATASET_BUCKET
+
 fi
 echo "Checking for CUDA and installing."
 # Check for CUDA and try to install.
@@ -28,4 +29,10 @@ fi
 # Enable persistence mode
 nvidia-smi -pm 1
 sudo nvidia-smi --auto-boost-default=DISABLED
+
+# Note that user should create $USER-dl-setup bucket in advance. and this bucket should have cuDNN
+gcsfuse $USER-dl-setup SETUP_BUCKET
+gcsfuse $USER-dl-weights WEIGHTS_BUCKET
+gcsfuse $USER-dl-dataset DATASET_BUCKET
+
 
