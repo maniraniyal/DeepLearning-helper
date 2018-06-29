@@ -3,18 +3,20 @@
 2> pip install --upgrade google-api-python-client
 3> gcloud init --console-only
 
-# create custom image
-1> create a VM with Ubuntu 16.04
-2> install cuda : https://www.tensorflow.org/install/install_linux
-   https://developer.nvidia.com/cuda-zone
-3> Download cuDNN : http://developer.nvidia.com/cudnn
-4> "gcloud compute scp" cuDNN to instance
-5> install cuDNN:
+#Create VM Image --one-time operation
+1> create VM from ubuntu16.04 TLS
+2> sudo apt-get update
+3> sudo apt-get upgrade -y
+4> sudo apt-get install python python-dev python3 python3-dev python-pip python3-pip -y
+5> install cuda driver: https://cloud.google.com/compute/docs/gpus/add-gpus#install-driver-manual
+6> Download cuDNN : http://developer.nvidia.com/cudnn
+7> install cuDNN:
     cd $HOME
     tar xzvf cudnn-<>.tgz
     sudo cp cuda/lib64/* /usr/local/cuda/lib64/
     sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
     rm -rf ~/cuda
     rm cudnn-<>.tgz
-6> install driver: https://cloud.google.com/compute/docs/gpus/add-gpus#install-driver-manual
+8> shutdown VM
+9> create Image from disk(disk of shutdown VM), using gcloud console
 
