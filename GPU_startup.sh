@@ -32,7 +32,7 @@ if ! dpkg-query -W cuda-9-0; then
   rm -rf cuda
 fi
 # Enable persistence mode
-nvidia-smi -pm 1
+sudo nvidia-smi -pm 1
 
 
 
