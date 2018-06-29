@@ -9,6 +9,10 @@ if ! dpkg-query -W gcsfuse; then
   mkdir SETUP_BUCKET
   mkdir WEIGHTS_BUCKET
   mkdir DATASET_BUCKET
+  # Note that user should create $USER-dl-setup bucket in advance. and this bucket should have cuDNN
+  gcsfuse "$USER-dl-setup" SETUP_BUCKET
+  gcsfuse "$USER-dl-weights" WEIGHTS_BUCKET
+  gcsfuse "$USER-dl-dataset" DATASET_BUCKET
 
 fi
 echo "Checking for CUDA and installing."
@@ -24,14 +28,12 @@ if ! dpkg-query -W cuda-9-0; then
   tar xzvf SETUP_BUCKET/cudnn-9.0-linux-x64-v7.1.tgz
   sudo cp cuda/lib64/* /usr/local/cuda/lib64/
   sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
+  sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
   rm -rf cuda
 fi
 # Enable persistence mode
 nvidia-smi -pm 1
 
-# Note that user should create $USER-dl-setup bucket in advance. and this bucket should have cuDNN
-gcsfuse "$USER-dl-setup" SETUP_BUCKET
-gcsfuse "$USER-dl-weights" WEIGHTS_BUCKET
-gcsfuse "$USER-dl-dataset" DATASET_BUCKET
+
 
 
