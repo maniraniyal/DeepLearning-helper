@@ -31,8 +31,8 @@ nvidia-smi -pm 1
 sudo nvidia-smi --auto-boost-default=DISABLED
 
 # Note that user should create $USER-dl-setup bucket in advance. and this bucket should have cuDNN
-gcsfuse $USER-dl-setup SETUP_BUCKET
-gcsfuse $USER-dl-weights WEIGHTS_BUCKET
-gcsfuse $USER-dl-dataset DATASET_BUCKET
+gcsfuse "$USER-dl-setup" SETUP_BUCKET
+gcsfuse "$USER-dl-weights" WEIGHTS_BUCKET
+gcsfuse "$USER-dl-dataset" DATASET_BUCKET
 
 
