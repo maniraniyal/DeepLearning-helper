@@ -1,1 +1,7 @@
 google-api-python-client
+bcolz
+matplotlib
+numpy
+opencv-python
+Pillow
+torch

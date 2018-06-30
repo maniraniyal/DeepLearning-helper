@@ -43,4 +43,12 @@
     torch.cuda.get_device_name(0)
 7> pip3 install --upgrade bcolz graphviz sklearn_pandas isoweek pandas_summary ipywidgets tqdm torch torchvision torchtext kaggle
 
+# VM startup- configuration
+1> Edit ~/.profile and append the file with following text
+gcsfuse "$USER-dl-setup" SETUP_BUCKET
+gcsfuse "$USER-dl-weights" WEIGHTS_BUCKET
+gcsfuse "$USER-dl-dataset" DATASET_BUCKET
 
+#Optional
+1> sudo apt-get install zip unzip
+2> pip3 install --upgrade opencv-python
