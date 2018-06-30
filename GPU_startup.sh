@@ -29,6 +29,7 @@ if ! dpkg-query -W cuda-9-0; then
   sudo cp cuda/lib64/* /usr/local/cuda/lib64/
   sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
   sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
+  sudo ldconfig /usr/local/cuda/lib64 #to fix the issue that libcudnn not found
   rm -rf cuda
 fi
 # Enable persistence mode

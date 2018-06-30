@@ -20,3 +20,14 @@
 8> shutdown VM
 9> create Image from disk(disk of shutdown VM), using gcloud console
 
+
+#installing Tensorflow on a fresh VM based on custom image
+1> sudo apt-get install python3-pip python3-dev python-virtualenv
+2> virtualenv --system-site-packages -p python3 TF_ENV_PYTHON3
+3> activate VENV setup: source TF_ENV_PYTHON3/bin/activate
+4> easy_install -U pip
+5> pip3 install --upgrade tensorflow-gpu
+6> Test if GPU is recognised, run python: sudo TF_ENV_PYTHON3/bin/python
+    import tensorflow as tf
+    sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
+
