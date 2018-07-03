@@ -13,7 +13,55 @@ import torch
 import shutil
 
 
+def flip_image(img, HR=True, VER=True, HR_VER=True, ROT90=True, ROT90_HR=True):
+    """
+    This function create flip images
+    :param img: np array
+    :param HR: if true, flip the img horizontally
+    :param VER: if true, flip the img vertically
+    :param HR_VER: if true, flip the img horizontally then vertically
+    :param ROT90: if true, rotate 90 degree anticlockwise
+    :param ROT90_HR: if true, rotate 90 degree anticlockwise then horizontal flip
+    :return: dict with params as key ig they were true
+    """
+    flip_dict = {}
+    if HR:
+        flip_dict["HR"] = np.fliplr(img)
+    if VER:
+        flip_dict["VER"] = np.flipud(img)
+    if HR_VER:
+        flip_dict["HR_VER"] = np.flipud(np.fliplr(img))
+    if ROT90:
+        flip_dict["ROT90"] = np.rot90(img)
+    if ROT90_HR:
+        flip_dict["ROT90_HR"] = np.fliplr(np.rot90(img))
+    return flip_dict
+
+
+def save_flip_arrays_as_image_files(path_to_save, basefile_name, filp_array_dict):
+    """
+    This function saves flipped arrays as image file.
+    :param path_to_save: directory where the image will be saved
+    :param basefile_name: original file name with extension. Not abs/relative path
+    :param filp_array_dict: flip_image() return object
+    :return:
+    """
+    if not os.path.isdir(path_to_save):
+        print("There is not such dir: " + path_to_save)
+        os.mkdir(path_to_save)
+        print("Created dir: " + path_to_save)
+    for header in filp_array_dict:
+        img = Image.fromarray(filp_array_dict[header])
+        img.save(path_to_save + "/" + header + "_" + basefile_name)
+
+
 def save_torch_weights_from_model(torch_model, weight_filename):
+    """
+    Save torch model weights
+    :param torch_model:
+    :param weight_filename:
+    :return: None
+    """
     if os.path.exists(weight_filename):
         for i in range(10):
             tmp_file = weight_filename + '_' + str(random.randint(1, 1000))
