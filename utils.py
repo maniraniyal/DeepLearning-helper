@@ -139,7 +139,11 @@ def load_array(rootdir):
 
 def plot_image_from_files(filenames, col=3, DPI=200):
     """
-    plotImageFromFiles plot images in row and column, given filename with abs/relative path
+    PlotImageFromFiles plot images in row and column, given filename with abs/relative path
+    :param filenames: list of file names
+    :param col: how many column in figure
+    :param DPI: pixel density
+    :return: None
     """
     total_images = len(filenames)
     fig = plt.figure(dpi=DPI)
@@ -150,7 +154,11 @@ def plot_image_from_files(filenames, col=3, DPI=200):
 
 def plot_image_from_list_of_arrays(arraylist, col=3, DPI=200):
     """
-    plotImageFromListOfArrays plot images in row and column, given numpyarray(3,x,x) as list.
+    PlotImageFromListOfArrays plot images in row and column, given numpyarray(3,x,x) as list
+    :param arraylist: list of image arrays
+    :param col: how many column in figure
+    :param DPI: pixel density
+    :return: None
     """
     total_images = len(arraylist)
     fig = plt.figure(dpi=DPI)
