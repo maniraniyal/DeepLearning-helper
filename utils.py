@@ -80,6 +80,10 @@ def save_torch_weights_from_model(torch_model, weight_filename):
 def convert_gray_images_to_rgb(directories_list, out_dir_suffix="_RGB", image_reg="/*.jpg"):
     """
     convert_grayImages_to_RGB assumes that directory has only grayscale or RGB images, not RGBA.
+    :param directories_list: list of input directories
+    :param out_dir_suffix: suffix of out directories
+    :param image_reg: regular expression to search for images
+    :return: None
     """
     for d in directories_list:
         os.mkdir(d+out_dir_suffix)
@@ -96,6 +100,10 @@ def convert_gray_images_to_rgb(directories_list, out_dir_suffix="_RGB", image_re
 def convert_rgb_to_gray_images(directories_list, out_dir_suffix="_GRAY", image_reg="/*.jpg"):
     """
     convert_RGB_to_grayImages assumes that directory has only grayscale or RGB images, not RGBA.
+    :param directories_list: list of input directories
+    :param out_dir_suffix: suffix of out directories
+    :param image_reg: regular expression to search for images
+    :return: None
     """
     for d in directories_list:
         os.mkdir(d+out_dir_suffix)
@@ -112,25 +120,30 @@ def convert_rgb_to_gray_images(directories_list, out_dir_suffix="_GRAY", image_r
 def save_array(rootdir, array):
     """
     saves the numpy array to the disk.
+    :param rootdir: directory to store the array
+    :param array: numpy array
+    :return: None
     """
-    c=bcolz.carray(array, rootdir=rootdir, mode='w')
+    c = bcolz.carray(array, rootdir=rootdir, mode='w')
     c.flush()
 
 
 def load_array(rootdir):
     """
     Loads numpy array from disk
+    :param rootdir: directory where array was saved before
+    :return: numpy array
     """
     return bcolz.open(rootdir)[:]
 
 
 def plot_image_from_files(filenames, col=3, DPI=200):
     """
-    plotImageFromFiles plot images in row and column, given filename with abs/relaive path
+    plotImageFromFiles plot images in row and column, given filename with abs/relative path
     """
     total_images = len(filenames)
     fig = plt.figure(dpi=DPI)
-    for i,f in enumerate(filenames):
+    for i, f in enumerate(filenames):
         plt.subplot(int(total_images/col)+1,col,i+1)
         plt.imshow(np.asarray(Image.open(filenames[i])))
 
