@@ -44,7 +44,7 @@ def get_img_validation_idx_based_on_class_percent(imgs_data, per=20, img_col=0, 
 def get_train_valid_data(map_data_np):
     """
     Divide training and validation data
-    :param map_data_np:
+    :param map_data_np: numpy array
     :return: training data, validation data
     """
     val_idxs = get_img_validation_idx_based_on_class_percent(imgs_data=map_data_np)
