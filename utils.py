@@ -150,6 +150,7 @@ def plot_image_from_files(filenames, col=3, DPI=200):
     for i, f in enumerate(filenames):
         plt.subplot(int(total_images/col)+1,col,i+1)
         plt.imshow(np.asarray(Image.open(filenames[i])))
+        plt.axis('off')
 
 
 def plot_image_from_list_of_arrays(arraylist, col=3, DPI=200):
@@ -165,3 +166,4 @@ def plot_image_from_list_of_arrays(arraylist, col=3, DPI=200):
     for i, arr in enumerate(arraylist):
         plt.subplot(int(total_images/col)+1,col,i+1)
         plt.imshow(arr)
+        plt.axis('off')
