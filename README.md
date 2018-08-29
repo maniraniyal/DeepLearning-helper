@@ -1,5 +1,5 @@
 # DeepLearning-helper
-This repository contains helper frequently used functions for Deep Learning, or setup scripts for GCP and fast.ai library on Colab.
+This repository contains some helper functions(utils.py) for Deep Learning, or setup scripts for GCP and fast.ai library on Colab.
 
 
 # Commands
