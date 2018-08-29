@@ -1,5 +1,5 @@
 # DeepLearning-helper
-This repository contains helper functions for Deep Learning
+This repository contains helper frequently used functions for Deep Learning, or setup scripts for GCP.
 
 
 # Commands
